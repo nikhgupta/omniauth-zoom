@@ -39,6 +39,30 @@ Open the following URL and connect your Zoom account with your application:
 
     /auth/zoom
 
+## Mock OAuth Response
+
+    {
+       "id"=>"66RIPutABCDqBNI5VQA9Tw",
+       "first_name"=>"Nikhil",
+       "last_name"=>"Gupta",
+       "email"=>"nick@yourdomain.com",
+       "type"=>1,
+       "pmi"=>123123123,
+       "use_pmi"=>false,
+       "personal_meeting_url"=>"https://zoom.us/j/123123123",
+       "timezone"=>"",
+       "verified"=>0,
+       "dept"=>"",
+       "created_at"=>"2018-08-20T08:43:44Z",
+       "last_login_time"=>"2018-09-07T07:51:47Z",
+       "last_client_version"=>"4.1.28165.0716(mac)",
+       "pic_url"=>"https://lh4.googleusercontent.com/-ncv-QFDfBKA/AAAAAAAAAAI/AAAAAAAAAA0/jOGyW7vaMus/photo.jpg?sz=50",
+       "host_key"=>"123456",
+       "group_ids"=>[],
+       "im_group_ids"=>[],
+       "account_id"=>"CrH_wNzoRBACBhMaCggL4A"
+     }
+
 ## Supported Rubies
 
 OmniAuth Zoom is tested under 2.3, 2.4, 2.5, JRuby (head) and Rubinius and ruby-head.

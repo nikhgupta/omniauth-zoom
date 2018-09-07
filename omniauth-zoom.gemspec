@@ -19,6 +19,7 @@ Gem::Specification.new do |gem|
   gem.required_ruby_version = '~> 2.0'
 
   gem.add_dependency 'omniauth-oauth2'
+  gem.add_dependency 'httparty'
 
   gem.add_development_dependency "rspec", "> 3"
   gem.add_development_dependency 'rake'

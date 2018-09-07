@@ -1,4 +1,4 @@
-require 'pry'
+require 'httparty'
 require 'omniauth-oauth2'
 
 module OmniAuth
@@ -15,21 +15,13 @@ module OmniAuth
       uid { info['id'] }
 
       info do
-        binding.pry
-        {
-          'id' => user_info['uri'].split('/').last.to_i,
-          'nickname' => user_info['link'].split('/').last,
-          'name' => user_info['name'],
-          'bio' => user_info['bio'],
-          'account' => user_info['account'],
-          'location' => user_info['location'],
-          'pictures' => user_info['pictures'],
-          'websites' => user_info['websites'],
-          'content_filter' => user_info['content_filter'],
-          'created_time' => user_info['created_time'],
-          'link' => user_info['link'],
-          'uri' => user_info['uri'],
-        }
+        unless @info
+          headers = {"Authorization" => "Bearer #{token}"}
+          res = HTTParty.get("https://zoom.us/v2/users/me", headers: headers)
+          @info = res.parsed_response
+        end
+
+        @info
       end
 
       def callback_url
@@ -37,7 +29,11 @@ module OmniAuth
       end
 
       def user_info
-        access_token.params['user']
+        info
+      end
+
+      def token
+        access_token.token
       end
 
       credentials do
