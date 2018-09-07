@@ -1,4 +1,3 @@
-require 'httparty'
 require 'omniauth-oauth2'
 
 module OmniAuth
@@ -16,9 +15,8 @@ module OmniAuth
 
       info do
         unless @info
-          headers = {"Authorization" => "Bearer #{token}"}
-          res = HTTParty.get("https://zoom.us/v2/users/me", headers: headers)
-          @info = res.parsed_response
+          api = Omniauth::Zoom::API.new(token)
+          @info = api.get("/users/me")
         end
 
         @info
@@ -51,6 +49,7 @@ module OmniAuth
       end
 
       extra do
+        binding.pry
         { 'scope' => access_token.params['scope'] }
       end
     end
