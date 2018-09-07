@@ -9,11 +9,11 @@ module Omniauth
       def initialize(token)
         @access_token = token
         self.class.headers ||= {}
-        binding.pry
-        self.class.headers['Authorization'] = "Bearer #{@access_token}"
+        self.class.headers('Authorization' => "Bearer #{@access_token}")
       end
 
       def get(*args, &block)
+        binding.pry
         self.class.get(*args, &block)
       end
 
