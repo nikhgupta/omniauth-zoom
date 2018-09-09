@@ -15,7 +15,7 @@ module OmniAuth
 
       info do
         unless @info
-          api = Omniauth::Zoom::API.new(token)
+          api = OmniAuth::Zoom::API.new(token)
           @info = api.get("/users/me")
         end
 
@@ -49,7 +49,6 @@ module OmniAuth
       end
 
       extra do
-        binding.pry
         { 'scope' => access_token.params['scope'] }
       end
     end

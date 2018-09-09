@@ -1,10 +1,10 @@
 require 'httparty'
 
-module Omniauth
+module OmniAuth
   module Zoom
     class API
       include HTTParty
-      base_uri 'https://zoom.us/v2'
+      base_uri 'https://api.zoom.us/v2'
 
       def initialize(token)
         @access_token = token
@@ -13,7 +13,6 @@ module Omniauth
       end
 
       def get(*args, &block)
-        binding.pry
         self.class.get(*args, &block)
       end
 
